@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:inscribe/Auth/screens/login.dart';
 import 'package:inscribe/Auth/screens/signup.dart';
+import 'package:inscribe/Home/screens/home.dart';
 import 'package:inscribe/OnBoarding/screens/on_borading_screen.dart';
 
 void main() {
@@ -18,7 +20,13 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Poppins',
         primarySwatch: Colors.blue,
       ),
-      home: const SignUpScreen(),
+      initialRoute: '/',
+      routes: {
+        "/" :(context) => const OnBoardingScreen(),
+        "/login" :(context) => LoginScreen(),
+        "/signup" :(context) =>  const SignUpScreen(),
+        "/home" :(context) => Home()
+      },
     );
   }
 }

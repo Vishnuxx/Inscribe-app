@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class AuthButton extends StatelessWidget {
+  String? title = "";
   void Function()? onTap;
-  AuthButton({Key? key, required this.onTap}) : super(key: key);
+  AuthButton({Key? key, required this.title ,  required this.onTap}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: double.infinity,
       child: Material(
-          color: Color(0xFF2C2C2C),
+          color: const Color(0xFF2C2C2C),
           clipBehavior: Clip.hardEdge,
           borderRadius: BorderRadius.circular(15),
           child: InkWell(
-            splashColor: Color.fromARGB(255, 213, 213, 213),
+            splashColor: const Color.fromARGB(255, 213, 213, 213),
             onTap: onTap!,
             child: Container(
               padding: const EdgeInsets.all(10),
@@ -21,12 +23,12 @@ class AuthButton extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
-                children: const [
+                children: [
                   SizedBox(
                     width: 77,
                     child: Text(
-                      "Signup",
-                      style: TextStyle(
+                      title! ,
+                      style: const TextStyle(
                         color: Colors.white,
                         fontSize: 20,
                         fontFamily: "Poppins",

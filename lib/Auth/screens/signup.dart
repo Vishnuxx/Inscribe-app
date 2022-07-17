@@ -2,19 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:inscribe/Auth/components/auth_button.dart';
 import 'package:inscribe/Auth/components/auth_input_field.dart';
 import 'package:inscribe/Auth/components/auth_oauth_buttons.dart';
+import 'package:inscribe/Auth/components/auth_link.dart';
 
 class SignUpScreen extends StatelessWidget {
-  final input_vertical_spacing = 25.0;
+  final input_vertical_spacing = 20.0;
   const SignUpScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Padding(
-      padding: const EdgeInsets.all(20),
-      child: Container(
-        width: double.infinity,
-        child: Column(
+        body: SafeArea(
+          child: Padding(
+              padding: const EdgeInsets.all(20),
+              child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Text(
@@ -48,43 +48,48 @@ class SignUpScreen extends StatelessWidget {
                 keyboardType: TextInputType.name),
             SizedBox(height: input_vertical_spacing * 6),
             AuthButton(
+              title: "Signup",
               onTap: (() {
                 print("sjk");
               }),
-
-              
             ),
-
-            
             SizedBox(height: input_vertical_spacing),
-
-           Row(
-             crossAxisAlignment: CrossAxisAlignment.center,
-             mainAxisAlignment: MainAxisAlignment.center,
-             children: [
-               OAuthButton(
-                  image: Image.asset("icons/Google.png"),
-                  onTap: () {},
-                ),
-                const SizedBox(width: 20,),
-                OAuthButton(
-                  image: Image.asset("icons/Apple.png"),
-                  onTap: () {},
-                ),
-                 const SizedBox(
-                  width: 20,
-                ),
-                OAuthButton(
-                  image: Image.asset("icons/Facebook.png"),
-                  onTap: () {},
-                )
-             ],
-           )
-           
-            
+            // Row(
+            //   crossAxisAlignment: CrossAxisAlignment.center,
+            //   mainAxisAlignment: MainAxisAlignment.center,
+            //   children: [
+            //     OAuthButton(
+            //       image: Image.asset("icons/Google.png"),
+            //       onTap: () {},
+            //     ),
+            //     const SizedBox(
+            //       width: 20,
+            //     ),
+            //     OAuthButton(
+            //       image: Image.asset("icons/Apple.png"),
+            //       onTap: () {},
+            //     ),
+            //     const SizedBox(
+            //       width: 20,
+            //     ),
+            //     OAuthButton(
+            //       image: Image.asset("icons/Facebook.png"),
+            //       onTap: () {},
+            //     )
+            //   ],
+            // ),
+            SizedBox(height: input_vertical_spacing),
+            Center(
+              child: LinkButton(
+                text: "Already have an account? login",
+                onTap: () {
+                  Navigator.popAndPushNamed(context, "/login");
+                },
+              ),
+            )
           ],
-        ),
-      ),
-    ));
+              ),
+            ),
+        ));
   }
 }
